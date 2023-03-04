@@ -21,6 +21,10 @@ public class StatusService {
     @Autowired
     ResponseModelFactory responseModelFactory;
 
+    //TODO: Could pull this out into a config file
+    final String AMAZON_API = "https://www.amazon.com";
+    final String GOOGLE_API = "https://www.google.com";
+
 
     public ResponseModel getStatus(String url) {
         HttpHeaders headers = new HttpHeaders();
@@ -42,13 +46,20 @@ public class StatusService {
 
     }
 
-
     public List<ResponseModel> getAllStatuses() {
 
-        List<String> urls = Arrays.asList("https://www.google.com", "https://www.amazon.com");
+        List<String> urls = Arrays.asList(GOOGLE_API, AMAZON_API);
 
         return urls.stream().map(this::getStatus).toList();
 
+    }
+
+    public ResponseModel getGoogleStatus() {
+        return getStatus(GOOGLE_API);
+    }
+
+    public ResponseModel getAmazonStatus() {
+        return getStatus(AMAZON_API);
     }
 
 }

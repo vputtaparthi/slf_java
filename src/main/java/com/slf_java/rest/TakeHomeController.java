@@ -20,19 +20,23 @@ public class TakeHomeController {
 
 
     @GetMapping("v1/amazon-status")
+    //TODO: Would pull this out into a config file
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseModel getAmazonStatus() {
-        return statusService.getStatus("https://www.amazon.com");
+        return statusService.getAmazonStatus();
 
     }
 
     @GetMapping("v1/google-status")
+    //TODO: Would pull this out into a config file
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseModel getGoogleStatus() {
-        return statusService.getStatus("https://www.google.com");
+        return statusService.getGoogleStatus();
     }
 
     @GetMapping("v1/all-status")
+    //TODO: Would pull this out into a config file
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<ResponseModel> getAllStatus() {
         return statusService.getAllStatuses();
     }
